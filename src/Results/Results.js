@@ -7,11 +7,14 @@ export default function Results(props){
 
 const books = props.books;
 
+
 return books.map(book =>{
+
+console.log(book.volumeInfo.imageLinks)
 
     return (
         <div>
-            <ResultItem title={book.volumeInfo.title} />
+            <ResultItem  image={book.volumeInfo.imageLinks.thumbnail} title={book.volumeInfo.title}  desc={book.volumeInfo.description} author={book.volumeInfo.authors} cost={book.saleInfo.saleability === "FOR_SALE" ? book.saleInfo.listPrice.amount : 'Not for sale'}/>
         </div>
     
 

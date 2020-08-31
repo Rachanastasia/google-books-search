@@ -1,15 +1,21 @@
 import React from 'react';
 
 export default function SearchType(){
-
+    const filters = ['all', 'books', 'magazines']
+    const options = filters.map(opt => {
+    
+        return (
+            <option value={opt}>{opt}</option>
+        )
+    
+    
+    })
 
     return(
         <div>
             <label htmlFor="type">Content type:</label>
             <select name="type">
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            {options}
             </select>
         </div>
 
