@@ -4,7 +4,7 @@ import React from 'react';
 export default function ResultItem(props){
 
     return <div className='result-item'>
-                <h2>Book Title{props.title}</h2>
+                <h2>{props.title}</h2>
                 <div className='item-content'>
                     <div className='item-image'>image{props.image}</div>
                     <div className='item-info'>

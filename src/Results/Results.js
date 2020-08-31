@@ -5,9 +5,33 @@ import ResultItem from '../ResultsItem/ResultItem';
 
 export default function Results(props){
 
-    return <div>
-        <ResultItem title={props.state.title}/>
-        <ResultItem />
-    </div>
+const books = props.books;
+
+return books.map(book =>{
+
+    return (
+        <div>
+            <ResultItem title={book.volumeInfo.title} />
+        </div>
+    
+
+    )
+
+})
+
+// console.log(newArr)
+// //     const newArr = props.books.map(book =>{
+
+// //     console.log(book.volumeInfo.title)
+    
+// //     // return (
+// //     // <div>
+// //     //     <ResultItem title={book.volumeInfo.title}/>
+// //     // </div>
+// //     // )
+// // })
+// return(
+//     <div></div>
+
 
 }

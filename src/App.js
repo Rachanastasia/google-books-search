@@ -12,8 +12,7 @@ class App extends Component {
     printType: '',
     filtering: '',
     search: '',
-    loading: false,
-    submit: false,
+    loading: false
 
     // title: '',
     // author: '',
@@ -33,22 +32,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ submit: true });
-  }
-
-
-
-
-
-  render() {
-    return <main className='App'>
-      <Header />
-      <SearchField search={this.state.search} submit={this.handleSubmit} inputFunc={this.handleInputChange} />
-      <Results state={this.state} />
-    </main>
-  };
-
-  componentDidUpdate() {
+    // this.setState({ submit: true });
     const apiKey = `AIzaSyAv7rNaCRp1G0QqK_oS8XlRzKLaLLW9y-E`;
     const ROOT_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
@@ -61,13 +45,38 @@ class App extends Component {
       }
     }
 
-    if (this.state.submit === true) {
       fetch(`${ROOT_URL}${this.state.search}`, options)
         .then(res => res.json())
-        .then(data => this.setState({books: data.items, submit: false}));
-        console.log(this.state.books);
-    }
-  }
-}
+        .then(data => this.setState({books: data.items}))
 
+  
+  }
+
+
+
+  //author data.items.volumeInfo.authors 
+  //img data.items.volumeInfo.imageLinks
+  //smallThumnail
+  //thumbnail
+//volumeInfo.description
+
+//price data.items.saleInfo.listPrice.amount
+
+
+
+
+
+  render() {
+
+    return(
+     <main className='App'>
+      <Header />
+      <SearchField search={this.state.search} submit={this.handleSubmit} inputFunc={this.handleInputChange} />
+      <Results books={this.state.books}/>
+    </main>
+    )
+  };
+
+
+}
 export default App;
